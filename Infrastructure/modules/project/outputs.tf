@@ -62,3 +62,23 @@ output "cloudwatch_log_group_arn" {
   description = "CloudWatch log group ARN"
   value       = module.rest_api_lambda.log_group_arn
 }
+
+output "api_endpoint" {
+  description = "API Gateway endpoint URL"
+  value       = module.api_gateway.api_endpoint
+}
+
+output "api_id" {
+  description = "API Gateway ID"
+  value       = module.api_gateway.api_id
+}
+
+output "api_arn" {
+  description = "API Gateway ARN"
+  value       = module.api_gateway.api_arn
+}
+
+output "api_log_group_name" {
+  description = "API Gateway CloudWatch log group name"
+  value       = module.api_gateway.log_group_name
+}

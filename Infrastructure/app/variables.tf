@@ -77,6 +77,31 @@ variable "log_retention_days" {
   default     = 14
 }
 
+# API Gateway Configuration
+variable "api_authorization_type" {
+  description = "Authorization type for API (NONE, AWS_IAM, CUSTOM)"
+  type        = string
+  default     = "NONE"
+}
+
+variable "api_cors_allow_origins" {
+  description = "CORS allowed origins"
+  type        = list(string)
+  default     = ["*"]
+}
+
+variable "api_cors_allow_methods" {
+  description = "CORS allowed methods"
+  type        = list(string)
+  default     = ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]
+}
+
+variable "api_cors_allow_headers" {
+  description = "CORS allowed headers"
+  type        = list(string)
+  default     = ["*"]
+}
+
 variable "common_tags" {
   description = "Common tags to apply to all resources"
   type        = map(string)
