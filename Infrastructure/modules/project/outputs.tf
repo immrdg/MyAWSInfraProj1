@@ -1,40 +1,39 @@
 output "lambda_function_arn" {
   description = "ARN of the REST API Lambda function"
-  value       = module.project.lambda_function_arn
+  value       = module.rest_api_lambda.lambda_function_arn
 }
 
 output "lambda_function_name" {
   description = "Name of the REST API Lambda function"
-  value       = module.project.lambda_function_name
+  value       = module.rest_api_lambda.lambda_function_name
 }
 
 output "lambda_invoke_arn" {
   description = "Invoke ARN of the REST API Lambda function"
-  value       = module.project.lambda_invoke_arn
+  value       = module.rest_api_lambda.lambda_function_invoke_arn
 }
 
 output "lambda_role_arn" {
   description = "ARN of the Lambda execution role"
-  value       = module.project.lambda_role_arn
+  value       = module.rest_api_lambda.lambda_role_arn
 }
 
 output "s3_artifacts_bucket_id" {
   description = "S3 bucket for Lambda artifacts"
-  value       = module.project.s3_artifacts_bucket_id
+  value       = module.s3_lambda_artifacts.bucket_id
 }
 
 output "s3_artifacts_bucket_arn" {
   description = "ARN of the S3 artifacts bucket"
-  value       = module.project.s3_artifacts_bucket_arn
+  value       = module.s3_lambda_artifacts.bucket_arn
 }
 
 output "cloudwatch_log_group_name" {
   description = "CloudWatch log group name for Lambda"
-  value       = module.project.cloudwatch_log_group_name
+  value       = module.rest_api_lambda.log_group_name
 }
 
 output "cloudwatch_log_group_arn" {
   description = "CloudWatch log group ARN"
-  value       = module.project.cloudwatch_log_group_arn
+  value       = module.rest_api_lambda.log_group_arn
 }
-

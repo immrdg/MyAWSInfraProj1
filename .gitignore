@@ -1,5 +1,6 @@
 # all terragrunt-cache
 **/.terragrunt-cache
-.terragrunt.lock.hcl
+**/.terragrunt.lock.hcl
+**/.terraform.lock.hcl
 .coverage
 **/.DS_Store

@@ -1,55 +1,38 @@
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
-variable "profile" {
-  description = "AWS Profile"
+variable "function_name" {
+  description = "Name of the Lambda function"
   type        = string
 }
 
-variable "environment" {
-  description = "Environment name (dev, prod, staging, etc.)"
-  type        = string
-}
-
-variable "project_name" {
-  description = "Project name prefix for resources"
-  type        = string
-}
-
-# Lambda configuration
-variable "lambda_zip_file_path" {
+variable "zip_file_path" {
   description = "Path to the Lambda function zip file"
   type        = string
 }
 
-variable "lambda_handler" {
-  description = "Lambda function handler"
+variable "handler" {
+  description = "Lambda function handler (e.g., index.handler)"
   type        = string
   default     = "handler.lambda_handler"
 }
 
-variable "lambda_runtime" {
+variable "runtime" {
   description = "Lambda runtime"
   type        = string
   default     = "python3.11"
 }
 
-variable "lambda_timeout" {
+variable "timeout" {
   description = "Lambda function timeout in seconds"
   type        = number
   default     = 30
 }
 
-variable "lambda_memory_size" {
+variable "memory_size" {
   description = "Lambda function memory in MB"
   type        = number
   default     = 128
 }
 
-variable "lambda_environment_variables" {
+variable "environment_variables" {
   description = "Environment variables for Lambda function"
   type        = map(string)
   default     = {}
@@ -69,4 +52,3 @@ variable "common_tags" {
     ManagedBy = "Terragrunt"
   }
 }
-

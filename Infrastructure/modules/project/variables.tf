@@ -1,21 +1,10 @@
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
-variable "profile" {
-  description = "AWS Profile"
+variable "project_name" {
+  description = "Project name - used as prefix for all resources"
   type        = string
 }
 
 variable "environment" {
-  description = "Environment name (dev, prod, staging, etc.)"
-  type        = string
-}
-
-variable "project_name" {
-  description = "Project name prefix for resources"
+  description = "Environment name (dev, staging, prod, etc.)"
   type        = string
 }
 
@@ -69,4 +58,3 @@ variable "common_tags" {
     ManagedBy = "Terragrunt"
   }
 }
-
