@@ -1,5 +1,16 @@
 # Project Module - Orchestrates all resources for the REST API Lambda project
 
+# VPC with public and private subnets
+module "vpc" {
+  source = "../vpc"
+
+  environment            = var.environment
+  vpc_cidr               = var.vpc_cidr
+  public_subnet_cidrs    = var.public_subnet_cidrs
+  private_subnet_cidrs   = var.private_subnet_cidrs
+  common_tags            = var.common_tags
+}
+
 # S3 Bucket for Lambda code artifacts
 module "s3_lambda_artifacts" {
   source = "../s3"
