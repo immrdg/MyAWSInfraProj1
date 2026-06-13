@@ -3,6 +3,10 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
 }
+variable "profile" {
+  description = "AWS Profile"
+  type        = string
+}
 
 variable "environment" {
   description = "Environment name (dev, prod, staging, etc.)"
