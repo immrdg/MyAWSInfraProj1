@@ -2,3 +2,4 @@
 **/.terragrunt-cache
 .terragrunt.lock.hcl
 .coverage
+**/.DS_Store
