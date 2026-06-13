@@ -5,11 +5,9 @@ Creates a VPC with public and private subnets across multiple availability zones
 ## Features
 
 - **VPC**: Configurable CIDR block
-- **Public Subnets**: For resources that need internet access (load balancers, NAT gateways)
-- **Private Subnets**: For resources that should not be directly internet-accessible (Lambda, databases)
+- **Public Subnets**: For resources that need internet access (load balancers, bastion hosts)
+- **Private Subnets**: For resources that should not be directly internet-accessible
 - **Internet Gateway**: For public subnet internet access
-- **NAT Gateways**: For private subnet egress (one per AZ for high availability)
-- **Route Tables**: Separate route tables for public and private subnets
 
 ## Resources Created
 
@@ -17,8 +15,6 @@ Creates a VPC with public and private subnets across multiple availability zones
 - N x Public Subnets (one per availability zone)
 - N x Private Subnets (one per availability zone)
 - 1x Internet Gateway
-- N x NAT Gateways (one per AZ)
-- N x Elastic IPs (for NAT Gateways)
 - 1x Public Route Table
 - N x Private Route Tables (one per AZ)
 
@@ -58,17 +54,16 @@ module "vpc" {
 - `vpc_cidr`: VPC CIDR block
 - `public_subnet_ids`: List of public subnet IDs
 - `private_subnet_ids`: List of private subnet IDs
-- `nat_gateway_ids`: List of NAT Gateway IDs
 - `internet_gateway_id`: Internet Gateway ID
 
 ## High Availability
 
 - Multiple availability zones (one subnet per AZ)
-- One NAT Gateway per AZ for private subnet egress
 - Separate route tables per AZ for optimal routing
+- Distributed across 3 AZs for fault tolerance
 
 ## Security
 
-- Private subnets cannot directly reach the internet
-- NAT Gateways provide controlled egress from private subnets
+- Private subnets are isolated (no direct internet access)
 - Public subnets are exposed to the internet via IGW
+- Network ACLs and security groups provide additional protection

@@ -18,7 +18,6 @@ output "private_subnet_ids" {
   value       = module.vpc.private_subnet_ids
 }
 
-
 output "internet_gateway_id" {
   description = "Internet Gateway ID"
   value       = module.vpc.internet_gateway_id
