@@ -18,10 +18,6 @@ output "private_subnet_ids" {
   value       = module.vpc.private_subnet_ids
 }
 
-output "nat_gateway_ids" {
-  description = "List of NAT Gateway IDs"
-  value       = module.vpc.nat_gateway_ids
-}
 
 output "internet_gateway_id" {
   description = "Internet Gateway ID"
