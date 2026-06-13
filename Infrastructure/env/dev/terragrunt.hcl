@@ -35,6 +35,12 @@ inputs = {
   }
   log_retention_days       = 7
 
+  # API Gateway configuration
+  api_authorization_type  = "NONE"
+  api_cors_allow_origins  = ["*"]
+  api_cors_allow_methods  = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+  api_cors_allow_headers  = ["Content-Type", "Authorization", "X-Amz-Date"]
+
   common_tags = merge(
     include.root.inputs.common_tags,
     local.environment_tags
