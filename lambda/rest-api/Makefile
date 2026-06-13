@@ -1,4 +1,4 @@
-.PHONY: help venv install install-dev test lint format clean clean-venv build
+.PHONY: help venv install install-dev test lint format clean clean-venv build deploy-plan deploy
 
 help:
 	@echo "Available commands:"
@@ -43,6 +43,5 @@ clean-venv:
 build: clean
 	mkdir -p build
 	cp handler.py build/
-	. .venv/bin/activate && pip install --target build -r requirements.txt
 	cd build && zip -r ../lambda-function.zip . -x "*.git*" "__pycache__/*" "*.py[cod]"
-	@echo "Built: lambda-function.zip"
+	@echo "Built: lambda-function.zip (code only)"
