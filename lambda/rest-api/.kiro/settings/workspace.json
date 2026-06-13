@@ -1,0 +1,11 @@
+{
+  "workspaceName": "rest-api",
+  "description": "REST API Lambda Function - Sub-project",
+  "projectType": "python",
+  "pythonVersion": "3.11",
+  "buildTool": "make",
+  "testCommand": "make test",
+  "lintCommand": "make lint",
+  "formatCommand": "make format",
+  "buildCommand": "make build"
+}
