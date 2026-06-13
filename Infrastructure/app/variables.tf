@@ -19,6 +19,22 @@ variable "project_name" {
   type        = string
 }
 
+# VPC Configuration
+variable "vpc_cidr" {
+  description = "VPC CIDR block"
+  type        = string
+}
+
+variable "public_subnet_cidrs" {
+  description = "List of public subnet CIDR blocks"
+  type        = list(string)
+}
+
+variable "private_subnet_cidrs" {
+  description = "List of private subnet CIDR blocks"
+  type        = list(string)
+}
+
 # Lambda configuration
 variable "lambda_zip_file_path" {
   description = "Path to the Lambda function zip file"
