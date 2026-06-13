@@ -34,10 +34,9 @@ def lambda_handler(event, context):
     """
     Lambda handler for REST API - Get employee details by ID
 
-    Expected event format:
-    {
-        "employeeId": "EMP001"
-    }
+    Expected event formats:
+    1. JSON body: {"employeeId": "EMP001"}
+    2. Query string: ?employeeId=EMP001
 
     Returns:
     {
@@ -52,9 +51,25 @@ def lambda_handler(event, context):
     """
     try:
         # Extract employee ID from event
-        employee_id = event.get("employeeId") or event.get(
-            "pathParameters", {}
-        ).get("employeeId")
+        employee_id = event.get("employeeId")
+        
+        # If not in direct event, check body (for JSON POST)
+        if not employee_id and event.get("body"):
+            try:
+                body = json.loads(event["body"])
+                employee_id = body.get("employeeId")
+            except (json.JSONDecodeError, TypeError):
+                pass
+        
+        # If not in body, check query parameters
+        if not employee_id:
+            query_params = event.get("queryStringParameters") or {}
+            employee_id = query_params.get("employeeId")
+        
+        # If still not found, check path parameters
+        if not employee_id:
+            path_params = event.get("pathParameters") or {}
+            employee_id = path_params.get("employeeId")
 
         if not employee_id:
             return {
