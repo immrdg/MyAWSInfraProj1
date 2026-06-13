@@ -70,10 +70,28 @@ resource "aws_apigatewayv2_integration" "lambda" {
   payload_format_version = "2.0"
 }
 
-# Route for Lambda integration
-resource "aws_apigatewayv2_route" "lambda" {
+# Default route for all methods and paths (catch-all)
+resource "aws_apigatewayv2_route" "default" {
   api_id    = aws_apigatewayv2_api.main.id
   route_key = "$default"
+  target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
+
+  authorization_type = var.authorization_type
+}
+
+# Explicit GET route for testing in console
+resource "aws_apigatewayv2_route" "get_root" {
+  api_id    = aws_apigatewayv2_api.main.id
+  route_key = "GET /"
+  target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
+
+  authorization_type = var.authorization_type
+}
+
+# Explicit POST route for testing in console
+resource "aws_apigatewayv2_route" "post_root" {
+  api_id    = aws_apigatewayv2_api.main.id
+  route_key = "POST /"
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
 
   authorization_type = var.authorization_type
