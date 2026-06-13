@@ -17,6 +17,17 @@ resource "aws_apigatewayv2_api" "main" {
   )
 }
 
+# Note: HTTP APIs (APIGatewayV2) do not have a test feature in AWS Console.
+# If you need console testing, you would need to switch to REST API (APIGateway V1).
+# REST APIs are more expensive ($3.50/M requests vs $0.30/M for HTTP),
+# but they have the full test feature with mock integration.
+#
+# For now, testing is recommended via:
+# 1. curl command line
+# 2. CloudWatch logs (API_DOCUMENTATION.md)
+# 3. External tools (Postman, Insomnia)
+# 4. AWS Lambda console (invoke Lambda directly with test events)
+
 resource "aws_apigatewayv2_stage" "main" {
   api_id      = aws_apigatewayv2_api.main.id
   name        = var.environment
