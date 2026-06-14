@@ -4,3 +4,6 @@
 **/.terraform.lock.hcl
 .coverage
 **/.DS_Store
+htmlcov/
+**/.pytest_cache/
+**/__pycache__/
