@@ -38,3 +38,50 @@ output "cloudwatch_log_group_arn" {
   value       = module.project.cloudwatch_log_group_arn
 }
 
+# API Gateway outputs
+output "api_endpoint" {
+  description = "API Gateway endpoint URL"
+  value       = module.project.api_endpoint
+}
+
+output "api_id" {
+  description = "API Gateway ID"
+  value       = module.project.api_id
+}
+
+output "api_arn" {
+  description = "API Gateway ARN"
+  value       = module.project.api_arn
+}
+
+output "api_log_group_name" {
+  description = "API Gateway CloudWatch log group name"
+  value       = module.project.api_log_group_name
+}
+
+# VPC outputs
+output "vpc_id" {
+  description = "VPC ID"
+  value       = module.project.vpc_id
+}
+
+output "vpc_cidr" {
+  description = "VPC CIDR block"
+  value       = module.project.vpc_cidr
+}
+
+output "public_subnet_ids" {
+  description = "List of public subnet IDs"
+  value       = module.project.public_subnet_ids
+}
+
+output "private_subnet_ids" {
+  description = "List of private subnet IDs"
+  value       = module.project.private_subnet_ids
+}
+
+output "internet_gateway_id" {
+  description = "Internet Gateway ID"
+  value       = module.project.internet_gateway_id
+}
+

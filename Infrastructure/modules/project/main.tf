@@ -36,3 +36,20 @@ module "rest_api_lambda" {
   log_retention_days    = var.log_retention_days
   common_tags           = var.common_tags
 }
+
+# API Gateway HTTP endpoint
+module "api_gateway" {
+  source = "../api-gateway"
+
+  api_name             = "${var.project_name}-api"
+  environment          = var.environment
+  lambda_function_name = module.rest_api_lambda.lambda_function_name
+  lambda_invoke_arn    = module.rest_api_lambda.lambda_function_invoke_arn
+  authorization_type  = var.api_authorization_type
+  cors_allow_origins  = var.api_cors_allow_origins
+  cors_allow_methods  = var.api_cors_allow_methods
+  cors_allow_headers  = var.api_cors_allow_headers
+  log_retention_days  = var.log_retention_days
+  common_tags         = var.common_tags
+}
+
